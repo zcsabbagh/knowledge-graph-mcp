@@ -5,9 +5,10 @@ An MCP server for tracking student learning via a knowledge graph.
 Features spaced repetition, misconception tracking, and intelligent queries.
 """
 
+import os
 from fastmcp import FastMCP
 
-from .database.connection import init_database
+from .database.connection import init_database, set_db_path
 from .models.node import NodeCreate, NodeUpdate
 from .models.edge import EdgeCreate
 from .models.enums import RelationType, QueryType
@@ -481,11 +482,36 @@ def get_statistics(domain: str | None = None) -> dict:
 
 def main():
     """Run the MCP server."""
+    # Check for custom database path from environment
+    db_path = os.environ.get("KNOWLEDGE_GRAPH_DB_PATH")
+    if db_path:
+        set_db_path(db_path)
+
     # Initialize the database
     init_database()
 
-    # Run the server
-    mcp.run()
+    # Check if running in HTTP mode (for Smithery deployment)
+    port = os.environ.get("PORT")
+    if port:
+        # HTTP mode for Smithery
+        import uvicorn
+        from starlette.middleware.cors import CORSMiddleware
+
+        # Create the HTTP app with CORS for browser clients
+        app = mcp.streamable_http_app()
+        app = CORSMiddleware(
+            app=app,
+            allow_origins=["*"],
+            allow_methods=["GET", "POST", "OPTIONS"],
+            allow_headers=["*"],
+            expose_headers=["mcp-session-id", "mcp-protocol-version"],
+            max_age=86400,
+        )
+
+        uvicorn.run(app, host="0.0.0.0", port=int(port))
+    else:
+        # Standard stdio mode for local usage
+        mcp.run()
 
 
 if __name__ == "__main__":

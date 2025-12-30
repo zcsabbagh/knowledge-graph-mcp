@@ -13,23 +13,24 @@ An MCP (Model Context Protocol) server for tracking student learning via a knowl
 
 ## Installation
 
-### Prerequisites
+### Option 1: Install from Smithery (Recommended)
 
-- Python 3.10+
-- pip
-
-### Install from source
+Install directly via [Smithery](https://smithery.ai):
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/knowledge-graph-mcp.git
-cd knowledge-graph-mcp
-pip install -e .
+npx @smithery/cli install @zcsabbagh/knowledge-graph-mcp --client claude
 ```
 
-Or install dependencies directly:
+Or use the hosted version at: **https://smithery.ai/server/@zcsabbagh/knowledge-graph-mcp**
+
+### Option 2: Install from source
+
+Prerequisites: Python 3.10+
 
 ```bash
-pip install fastmcp pydantic
+git clone https://github.com/zcsabbagh/knowledge-graph-mcp.git
+cd knowledge-graph-mcp
+pip install fastmcp pydantic uvicorn
 ```
 
 ## Usage

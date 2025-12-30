@@ -1,0 +1,7 @@
+# Smithery configuration file: https://smithery.ai/docs/deployments
+runtime: "container"
+build:
+  dockerfile: "Dockerfile"
+  dockerBuildPath: "."
+startCommand:
+  type: "http"
