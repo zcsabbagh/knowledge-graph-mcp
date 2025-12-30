@@ -1,3 +1,5 @@
+<!-- mcp-name: io.github.zcsabbagh/knowledge-graph-mcp -->
+
 # Knowledge Graph MCP Server
 
 An MCP (Model Context Protocol) server for tracking student learning via a knowledge graph. Built with FastMCP, it enables LLMs to build, query, and update a personalized knowledge map with spaced repetition scheduling.

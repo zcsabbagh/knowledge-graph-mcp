@@ -2,11 +2,30 @@
 name = "knowledge-graph-mcp"
 version = "0.1.0"
 description = "MCP server for tracking student learning via a knowledge graph"
+readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10"
+authors = [
+    { name = "zcsabbagh" }
+]
+keywords = ["mcp", "knowledge-graph", "education", "spaced-repetition", "learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
 dependencies = [
     "fastmcp>=2.0.0",
     "pydantic>=2.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/zcsabbagh/knowledge-graph-mcp"
+Repository = "https://github.com/zcsabbagh/knowledge-graph-mcp"
 
 [project.scripts]
 knowledge-graph-mcp = "knowledge_graph_mcp.server:main"
