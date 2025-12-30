@@ -4,12 +4,12 @@ FROM python:3.12-slim
 # Set working directory
 WORKDIR /app
 
-# Install dependencies
-COPY pyproject.toml .
-RUN pip install --no-cache-dir fastmcp pydantic uvicorn
-
-# Copy application code
+# Copy all files first
 COPY . .
+
+# Install the package and dependencies
+RUN pip install --no-cache-dir -e .
+RUN pip install --no-cache-dir uvicorn starlette
 
 # Create data directory for SQLite
 RUN mkdir -p /data
