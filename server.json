@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zcsabbagh/knowledge-graph-mcp",
+  "description": "Knowledge graph MCP for student learning with spaced repetition and mastery tracking",
+  "repository": {
+    "url": "https://github.com/zcsabbagh/knowledge-graph-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "knowledge-graph-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Custom path for SQLite database file (optional, defaults to ~/.knowledge_graph/knowledge.db)",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false,
+          "name": "KNOWLEDGE_GRAPH_DB_PATH"
+        }
+      ]
+    }
+  ]
+}
