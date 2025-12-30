@@ -30,7 +30,7 @@ Prerequisites: Python 3.10+
 ```bash
 git clone https://github.com/zcsabbagh/knowledge-graph-mcp.git
 cd knowledge-graph-mcp
-pip install fastmcp pydantic uvicorn
+pip install -e .
 ```
 
 ## Usage
